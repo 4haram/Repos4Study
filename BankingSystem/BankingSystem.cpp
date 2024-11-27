@@ -1,10 +1,10 @@
 #define _CRT_SECURE_NO_WARNINGS
+#define NAME_LENGTH 20 
+#define ACCOUNT_MAX 100
 
 #include <iostream>
 #include <cstring>
 using namespace std;
-#define NAME_LENGTH 20 
-#define ACCOUNT_MAX 100
 
 void ShowMenu();
 
@@ -14,9 +14,16 @@ private:
 	int number, balance;
 public:
 	Account() : name(nullptr), number(0), balance(0) {}
+
+	Account(const Account& copy) : number(copy.number), balance(copy.balance){
+		name = new char[strlen(copy.name) + 1];
+		strcpy(name, copy.name);
+	}
+
 	~Account() {
 		delete[] name;
 	}
+
 	char* GetAccountName() const;
 	void SetAccountName(const char*);
 
