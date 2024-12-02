@@ -10,10 +10,15 @@ void ShowMenu();
 
 class Account {
 private:
-	char* name;
-	int number, balance;
+	char* name;				// 고객 성함
+	int number, balance;	// 계좌번호, 잔액
 public:
 	Account() : name(nullptr), number(0), balance(0) {}
+
+	Account(const char* temp_name, int temp_number, int temp_balance) : number(temp_number), balance(temp_balance) {
+		name = new char[strlen(temp_name) + 1];
+		strcpy(name, temp_name);
+	}
 
 	Account(const Account& copy) : number(copy.number), balance(copy.balance){
 		name = new char[strlen(copy.name) + 1];
@@ -38,7 +43,7 @@ public:
 	void SetDepositInfo();
 	void SetWithdrawInfo();
 
-	void ShowAccountInfo();
+	void ShowAccountInfo() const;
 };
 
 char* Account::GetAccountName() const{
@@ -61,7 +66,10 @@ int Account::GetAccountBalance() const{
 	return this->balance;
 }
 void Account::SetAccountBalance(int balance) {
-	this->balance += balance;
+	if (balance >= 0) this->balance += balance;
+	else {
+		cout << "잘못된 잔액 접근을 시도했습니다.\n 다시 시도해주세요." << endl;
+	}
 }
 
 void Account::SetAccountData(const char* name, int number, int balance) {
@@ -70,14 +78,14 @@ void Account::SetAccountData(const char* name, int number, int balance) {
 	this->SetAccountBalance(balance);
 }
 
-void Account::ShowAccountInfo() {
+void Account::ShowAccountInfo() const {
 	cout << "계좌ID: " << this->GetAccountNumber()
 		 << ", 이름: " << (this->GetAccountName() ? this->GetAccountName() : "없음")
 		 << ", 잔액: " << this->GetAccountBalance()
 		 << "원" << endl;
 }
 
-Account* CreateAccount();
+Account* CreateAccount(Account* acc[], int);
 
 int SearchAccountNumber(Account* acc[], int id, int max);
 
@@ -115,9 +123,6 @@ void Account::SetWithdrawInfo() {
 		cout << "잘못된 시도입니다. \n다시 시도해주세요." << endl;
 	}
 }
-enum class CHOICE{
-
-};
 
 int main() {
 	int choice, accounts_now = 0, account_id = 0, temp_index;
@@ -128,7 +133,11 @@ int main() {
 		switch (choice)
 		{
 		case 1:
-			account[accounts_now] = CreateAccount();
+			if (accounts_now >= ACCOUNT_MAX) {
+				cout << "계좌를 더 이상 생성할 수 없습니다." << endl;
+				break;
+			}
+			CreateAccount(account, accounts_now);
 			accounts_now++;
 			break;
 		case 2:
@@ -159,7 +168,7 @@ int main() {
 				cout << "계좌 조회에 실패했습니다.\n다시 시도해주세요." << endl;
 				break;
 			}
-			account[temp_index]->ShowAccountInfo();
+			account[temp_index]->ShowAccountInfo();	//temp_index가 -1이 아니면, account는 nullptr이 아님, 경고 문구는 무시해도 됨
 			break;
 		case 5:
 			for (int i = 0; i < accounts_now; i++) {
@@ -185,7 +194,15 @@ void ShowMenu() {
 	cout << "선택: ";
 }
 
-Account* CreateAccount() {
+int SearchAccountNumber(Account* acc[], int id, int max) {
+	for (int i = 0; i < max; i++) {
+		if (acc[i] != nullptr && acc[i]->GetAccountNumber() == id) return i;
+	}
+
+	return -1;
+}
+
+Account* CreateAccount(Account* acc[], int accounts_now) {
 	Account* account = new Account;
 	char temp_string[NAME_LENGTH];
 	int number;
@@ -193,18 +210,17 @@ Account* CreateAccount() {
 	cout << "[계좌개설]" << endl;
 	cout << "계좌ID: ";
 	cin >> number;
+
+	if (SearchAccountNumber(acc, number, accounts_now) != -1) {
+		cout << "이미 해당 계좌번호는 사용 중입니다." << endl;
+		delete account;
+		return nullptr;
+	}
+
 	cout << "이름: ";
 	cin >> temp_string;
 	cout << "입금액: ";
 	cin >> balance;
 	account->SetAccountData(temp_string, number, balance);
 	return account;
-}
-
-int SearchAccountNumber(Account* acc[], int id, int max) {
-	for (int i = 0; i < max; i++) {
-		if (acc[i] != nullptr && acc[i]->GetAccountNumber() == id) return i;
-	}
-
-	return -1;
 }
