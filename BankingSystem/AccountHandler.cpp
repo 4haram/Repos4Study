@@ -1,10 +1,10 @@
 /*
- * Banking System ver 0.6
+ * This File's version is 0.7
  */
 
-#include "BankingCommonDecl.h"
 #include "AccountHandler.h"
 #include "Account.h"
+#include "BankingCommonDecl.h"
 #include "NormalAccount.h"
 #include "CreditAccount.h"
 
@@ -14,7 +14,7 @@
 AccountHandler::AccountHandler() : acc_num(0) {}
 
 AccountHandler::~AccountHandler() {
-	for (int i = 0; i < ACCOUNT_MAX; i++) {
+	for (int i = 0; i < acc_num; i++) {
 		delete account[i];
 	}
 }
@@ -75,7 +75,7 @@ void AccountHandler::CreateCreditAccount() {
 	int temp_balance;
 	int temp_interest;
 	int temp_grade;
-	cout << "[º¸Åë¿¹±Ý°èÁÂ °³¼³]" << endl;
+	cout << "[½Å¿ë½Å·Ú°èÁÂ °³¼³]" << endl;
 	cout << "°èÁÂID: "; cin >> temp_number;
 
 	if (SearchAccountNumber(temp_number) != -1) {
@@ -94,13 +94,13 @@ void AccountHandler::CreateCreditAccount() {
 	switch (temp_grade)
 	{
 	case 1:
-		account[acc_num++] = new HighCreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_A);
+		account[acc_num++] = new CreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_A);
 		break;
 	case 2:
-		account[acc_num++] = new HighCreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_B);
+		account[acc_num++] = new CreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_B);
 		break;
 	case 3:
-		account[acc_num++] = new HighCreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_C);
+		account[acc_num++] = new CreditAccount(temp_string, temp_number, temp_balance, temp_interest, GRADE_C);
 		break;
 	default:
 		break;

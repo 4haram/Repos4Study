@@ -1,5 +1,5 @@
 /*
- * Banking System ver 0.6
+ * This File's version is 0.7
  */
 
 #ifndef __BANKING_COMMON_H__
@@ -7,10 +7,10 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 #define NAME_LENGTH 20 
-#define ACCOUNT_MAX 100
 
 #include <iostream>
 #include <cstring>
+#include <cstdlib>
 
 using namespace std;
 

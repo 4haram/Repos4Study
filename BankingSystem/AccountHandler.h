@@ -1,17 +1,18 @@
 /*
- * Banking System ver 0.6
+ * This File's version is  0.7
  */
 #ifndef __ACCOUNT_HANDLER_H__
 #define __ACCOUNT_HANDLER_H__
 
 #include "Account.h"
-#include "BankingCommonDecl.h"
+#include "AccountPtrArray.h"
+
  /*
   * Control Class, AccountHandler
   */
 class AccountHandler {
 private:
-	Account* account[ACCOUNT_MAX];
+	AccountPtrArray account;
 	int acc_num;
 public:
 	AccountHandler();

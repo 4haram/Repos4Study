@@ -1,5 +1,5 @@
 /*
- * Banking System ver 0.6
+ * This File's version is 0.7
  */
 #include "BankingCommonDecl.h"
 #include "Account.h"
@@ -11,9 +11,19 @@ Account::Account(const char* temp_name, int temp_number, int temp_balance) : acc
 	strcpy(name, temp_name);
 }
 
-Account::Account(const Account& copy) : account_number(copy.account_number), balance(copy.balance) {
-	name = new char[strlen(copy.name) + 1];
-	strcpy(name, copy.name);
+Account::Account(const Account& ref) : account_number(ref.account_number), balance(ref.balance) {
+	name = new char[strlen(ref.name) + 1];
+	strcpy(name, ref.name);
+}
+
+Account& Account::operator=(const Account& ref) {
+	account_number	= ref.account_number;
+	balance			= ref.balance;
+
+	delete[] name;
+	name = new char[strlen(ref.name) + 1];
+	strcpy(name, ref.name);
+	return *this;
 }
 
 Account::~Account() {

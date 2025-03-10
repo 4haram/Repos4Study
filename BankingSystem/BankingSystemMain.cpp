@@ -1,5 +1,5 @@
 /*
- * Banking System ver 0.6
+ * This File's version is 0.7
  */
 #include "BankingCommonDecl.h"
 #include "AccountHandler.h"
@@ -13,11 +13,8 @@ int main() {
 		switch (choice)
 		{
 		case CREATE:
-			if (handler.GetNum() >= ACCOUNT_MAX) {
-				cout << "계좌를 더 이상 생성할 수 없습니다." << endl;
-				break;
-			}
 			handler.CreateAccount();
+
 			break;
 		case DEPOSIT:
 			handler.Deposit();

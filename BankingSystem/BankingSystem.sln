@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.10.34928.147
+VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BankingSystem", "BankingSystem.vcxproj", "{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BankingSystem", "BankingSystem.vcxproj", "{05882728-C566-4737-8C47-83F51DD3A9FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,19 +13,16 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Debug|x64.ActiveCfg = Debug|x64
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Debug|x64.Build.0 = Debug|x64
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Debug|x86.ActiveCfg = Debug|Win32
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Debug|x86.Build.0 = Debug|Win32
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Release|x64.ActiveCfg = Release|x64
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Release|x64.Build.0 = Release|x64
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Release|x86.ActiveCfg = Release|Win32
-		{FEDC23FA-74B4-4181-B3B4-C3D6E5EDE03F}.Release|x86.Build.0 = Release|Win32
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Debug|x64.ActiveCfg = Debug|x64
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Debug|x64.Build.0 = Debug|x64
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Debug|x86.ActiveCfg = Debug|Win32
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Debug|x86.Build.0 = Debug|Win32
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Release|x64.ActiveCfg = Release|x64
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Release|x64.Build.0 = Release|x64
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Release|x86.ActiveCfg = Release|Win32
+		{05882728-C566-4737-8C47-83F51DD3A9FD}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {1D030EF2-52D9-4747-AB50-D77FBC601BF9}
 	EndGlobalSection
 EndGlobal
