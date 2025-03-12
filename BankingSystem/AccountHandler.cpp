@@ -1,5 +1,5 @@
 /*
- * This File's version is 0.7
+ * This File's version is 0.8
  */
 
 #include "AccountHandler.h"
@@ -7,6 +7,7 @@
 #include "BankingCommonDecl.h"
 #include "NormalAccount.h"
 #include "CreditAccount.h"
+#include "String.h"
 
  /*
   * Class AccountHandler's Functions
@@ -50,7 +51,7 @@ void AccountHandler::CreateAccount() {
 }
 
 void AccountHandler::CreateNormalAccount() {
-	char temp_string[NAME_LENGTH];
+	String temp_string;
 	int temp_number;
 	int temp_balance;
 	int temp_interest;
@@ -70,7 +71,7 @@ void AccountHandler::CreateNormalAccount() {
 }
 
 void AccountHandler::CreateCreditAccount() {
-	char temp_string[NAME_LENGTH];
+	String temp_string;
 	int temp_number;
 	int temp_balance;
 	int temp_interest;
@@ -120,7 +121,6 @@ void AccountHandler::Deposit() {
 		return;
 	}
 
-	cout << "계좌ID: " << account[index]->GetAccountNumber() << endl;
 	cout << "입금액: "; cin >> money;
 	if (money < 0) {
 		cout << "잘못된 시도입니다. \n다시 시도해주세요." << endl;
@@ -144,7 +144,6 @@ void AccountHandler::Withdraw() {
 		cout << "존재하지 않는 계좌번호입니다.\n다시 시도해주세요." << endl;
 		return;
 	}
-	cout << "계좌ID: " << account[index]->GetAccountNumber() << endl;
 	cout << "출금액: "; cin >> money;
 	if (money >= 0 && money <= account[index]->GetBalance()) {
 		account[index]->Withdraw(money);
